@@ -1,0 +1,10 @@
+glyphicon-asterisk
+glyphicon-plus
+glyphicon-euro
+glyphicon-minus
+glyphicon-cloud
+glyphicon-envelope
+glyphicon-pencil
+glyphicon-glass
+glyphicon-music
+glyphicon-search

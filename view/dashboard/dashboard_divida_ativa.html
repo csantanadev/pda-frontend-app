@@ -1,0 +1,30 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="modal-header">
+        <a class="close" href="#/dashboard">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Ativa &nbsp;&nbsp;&nbsp;(Total: {{dados.divida_ativa[0].total|currency}})
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.divida_ativa track by dado.pda_jog_cod">
+                <td>{{dado.pda_jog_apelido}}</td>
+                <td>
+                    <font style="{{getColor(dado.divida_ativa)}}"> {{dado.divida_ativa|currency}}</font>
+                </td>
+                <td>
+                    <span class="pull-right">
+                        <a class="btn btn-xs btn-default" href="#/perfilJogadorDash/{{dado.pda_jog_cod}}">
+                            <i class="glyphicon glyphicon-search"></i> Detalhe</a>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

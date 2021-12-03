@@ -1,0 +1,42 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="modal-header">
+        <a class="close" href="#/dashboard">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-search"></span> Auditoria de Voto
+        </h4>
+    </div>
+    <br>
+    <form class="form-horizontal" role="form" name="Formulario">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>Peladeiro:</label>
+                <select class="form-control" id="pel" ng-model="pda_jog_cod" ng-change="pesquisa()" ng-options="jg.pda_jog_cod as jg.pda_jog_apelido for jg in jogadores">
+                    <option value="">- Selecione -</option>
+                </select>
+            </div>
+        </div>
+     </form>
+
+
+    <div class="form-group">
+
+        <table class="table table-hover" ng-if="auditoria">
+            <tr>
+                <td>Mês</td>
+                <td>Data</td>
+                <td>Escolhido</td>
+           </tr>
+            <tr ng-repeat="audit in auditoria">
+                <td style="{{getZebrado(audit.pi)}}" >{{audit.pda_pel_mes}}</td>
+                <td style="{{getZebrado(audit.pi)}}">{{audit.pda_pel_data}}</td>
+                <td style="{{getZebrado(audit.pi)}}">{{audit.pda_jog_apelido}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,148 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-calendar"></span> Peladas
+            <span class="pull-right" ng-if="admin === 'S'">
+                <a class="label label-primary" href="#/novaPelada">
+                    <i class="glyphicon glyphicon-plus"></i> Novo</a>
+            </span>
+        </h4>
+    </div>
+    <br>
+    <div class="modal-header">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>Mês / Ano:</label>
+                <select class="form-control" id="mes" ng-model="objPesq.mesano" ng-change="pesquisa()" ng-options="tab.mes+tab.ano as tab.mes_str+tab.ano for tab in tabelas">
+                    <option value="">- Selecione -</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-4" ng-repeat="dado in dados track by dado.pda_pel_cod">
+            <div class="thumbnail" style="background:#f6f5f5">
+                <div class="caption">
+
+                    <div class="caption">
+                        <a href="#/scoutsPelada/{{dado.pda_pel_cod}}" class="pull-left">
+                            <h5>
+                                <span class="glyphicon glyphicon-calendar"></span> {{dado.pda_pel_data | date : 'dd/MM/yyyy'}} </h5>
+                        </a>
+                        <h4>
+                            <span class="pull-right" ng-class="getStatus(dado.pda_pel_status)"> {{getStatusDesc(dado.pda_pel_status)}}</h4>
+                    </div>
+
+                    <br>
+                    <div class="caption">
+                        <span class="pull-left" ng-class="getOpcaoEscolhida(dado.pda_ppr_flg_status)">
+                            {{OpcaoEscolhidaDesc(dado.pda_ppr_flg_status)}} </span>
+
+						<span  class="pull-right" ng-if="dado.pda_pel_status === 'V'&&dado.esteve_presente === 'S'&&dado.ja_votou === 'N'">
+                            <a class="btn btn-sm btn-warning" href="#/votacaoPelada/{{dado.pda_pel_cod}}">
+                                <i class="glyphicon glyphicon-ok"></i> Clique aqui para votar</a>
+                        </span>                            
+
+                        <span  class="pull-right" ng-if="dado.pda_pel_status === 'V'&&dado.ja_votou === 'S'">
+                        	<font style="color:green;font-weight: bold;"> Já enviei minha votação.</font>
+                        </span>  
+
+						<span  class="pull-right" ng-if="dado.pda_pel_status === 'V'&&dado.esteve_presente === 'N'">
+                        	<font style="color:red;font-weight: bold;"> Você não pode votar.</font>
+                        </span>  
+                        <br>
+                        <span  class="pull-right" ng-if="dado.pda_pel_status === 'V'&&dado.esteve_presente === 'N'">
+                        	<font style="color:red;font-weight: bold;"> Você faltou neste dia.</font>
+                        </span>  
+
+
+                    </div>
+
+                    <br ng-if="admin === 'S'">
+                    <div class="caption" ng-if="admin === 'S'">
+                        <span ng-if="admin === 'S'" class="pull-right">
+                            <a class="btn btn-xs btn-default" href="#/detalhePelada/{{dado.pda_pel_cod}}">
+                                <i class="glyphicon glyphicon-pencil"></i> editar</a>
+                        </span>
+                        <span ng-if="admin === 'S'" class="btn btn-xs btn-default pull-right" ng-click="ConfirmaExclusao(dado.pda_pel_cod)">
+                            <i class="glyphicon glyphicon-remove"></i> excluir</span>     
+                    </div>
+                    <br>
+                    <table class="table table-hover" ng-if="dado.pda_pel_status === 'A' ">
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-success" ng-click="ConfirmaOpcao('S', dado.pda_pel_cod)">
+                                    <i class="glyphicon glyphicon-thumbs-up"></i> Eu vou</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger" ng-click="ConfirmaOpcao('N', dado.pda_pel_cod)">
+                                    <i class="glyphicon glyphicon-thumbs-down"></i> Não vou</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary" ng-click="ConfirmaOpcao('T', dado.pda_pel_cod)">
+                                    <i class="glyphicon glyphicon-question-sign"></i> Talvez</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-hover" ng-if="dado.pad_pel_status === 'F' ">
+                        <tr>
+                            <td>
+                                <p>Não é possível mais confirmar presença.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade " id="confirmacao">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="Excluir(codexclusao)">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="confirmacao_opcao">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a opção escolhida ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="confimarPresenca()">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

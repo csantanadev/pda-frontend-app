@@ -1,0 +1,424 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header">
+        <a class="close" href="#/peladas">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-thumbs-up"></span> Confirmaram Presença</h4>
+    </div>
+
+    <div class="form-group">
+        <div id="possivel" class="alert alert-info" ng-if="dados.possivel_presenca_sim.length === 0">
+            Não houveram confirmações !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.possivel_presenca_sim track by dado.pda_ppr_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-thumbs-down"></span> Não vão comparecer
+        </h4>
+    </div>
+    <div class="form-group">
+        <div id="nao_vao" class="alert alert-info" ng-if="dados.possivel_presenca_nao.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.possivel_presenca_nao track by dado.pda_ppr_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-question-sign"></span> Talvez compareça
+        </h4>
+    </div>
+    <div class="form-group">
+        <div id="nao_vao" class="alert alert-info" ng-if="dados.possivel_presenca_talvez.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.possivel_presenca_talvez track by dado.pda_ppr_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="container">
+
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="flaticon-three-persons"></span> Peladeiros Presentes
+            <button type="button" class="btn btn-xs btn-primary pull-right" ng-if="admin === 'S'" ng-click="ConfirmaPresenca()">
+                <i class="glyphicon glyphicon-list-alt"></i> Presença</button>
+        </h4>
+    </div>
+
+
+    <div class="form-group">
+        <div id="efetiva" class="alert alert-info" ng-if="dados.presenca_efetiva.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.presenca_efetiva track by dado.pda_lpr_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>
+                	<span class="label label-success pull-right" ng-if="dado.votou === 'S'">Enviou Votação
+                </td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-danger pull-right" ng-if="admin === 'S'" ng-click="excluirPresensa(dado.pda_lpr_cod)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span>
+                <img src="./img/gols.png">
+            </span> Gols da pelada
+            <span class="pull-right">
+                <span id="btnNovo" ng-if="admin === 'S'" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#cadastro" ng-click="Limpar();">
+                    <i class="glyphicon glyphicon-list-alt"></i> Novo Lançamento</span>
+            </span>
+    </div>
+    <div class="form-group">
+        <div id="gols" class="alert alert-info" ng-if="dados.gols.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.gols track by dado.pda_fjg_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.pda_fjg_gol}}</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-danger pull-right" ng-if="admin === 'S'" ng-click="excluirLancamento(dado.pda_fjg_cod)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span>
+                <img src="./img/trofeu.png">
+            </span> Seleção
+            &nbsp;&nbsp;
+            <span class="" ng-if="(dados.status_pelada === 'F' || admin === 'S')">
+                <span id="btnNovo" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#meus_votos">
+                    <i class="glyphicon glyphicon-user"></i> Meus Votos</span>
+            </span>
+            &nbsp;&nbsp;&nbsp;
+            <span class="" ng-if="(dados.status_pelada === 'F' || admin === 'S')">
+                <span id="btnNovo" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#resultado_completo">
+                    <i class="glyphicon glyphicon-stats"></i> Apuração</span>
+            </span>
+    </div>
+    <div class="form-group">
+
+        <div id="selecao" class="alert alert-warning" ng-if="dados.status_pelada != 'F'">
+            O resultado da votação só será exibido após fechamento da pelada  !
+        </div>
+
+        <table class="table table-hover" ng-if="(dados.status_pelada === 'F' || admin === 'S')">
+            <tr>
+                <td>Peladeiro</td>
+                <td>Votos</td>
+           </tr>
+            <tr ng-repeat="dado in dados.selecao">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.qtd_votos}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span>
+                <img src="./img/cartaoamarelo.png">
+            </span> Cartões Amarelo</h4>
+    </div>
+    <div class="form-group">
+        <div id="amarelo" class="alert alert-info" ng-if="dados.amarelo.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.amarelo track by dado.pda_fjg_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.pda_fjg_amarelo}}</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-danger pull-right" ng-if="admin === 'S'" ng-click="excluirLancamento(dado.pda_fjg_cod)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span>
+                <img src="./img/cartaoazul.png">
+            </span> Cartões Azul</h4>
+    </div>
+    <div class="form-group">
+        <div id="azul" class="alert alert-info" ng-if="dados.azul.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.azul track by dado.pda_fjg_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.pda_fjg_azul}}</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-danger pull-right" ng-if="admin === 'S'" ng-click="excluirLancamento(dado.pda_fjg_cod)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span>
+                <img src="./img/cartaovermelho.png">
+            </span> Cartões Vermelho</h4>
+    </div>
+    <div class="form-group">
+        <div id="vermelho" class="alert alert-info" ng-if="dados.vermelho.length == 0">
+            Não houveram lançamentos !
+        </div>
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.vermelho track by dado.pda_fjg_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.pda_fjg_vermelho}}</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-danger pull-right" ng-if="admin === 'S'" ng-click="excluirLancamento(dado.pda_fjg_cod)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="modal fade " id="lista_jogadores_lancamento">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Lançar Presentes</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr ng-class="{selecionado: dado.selecionado}" ng-repeat="dado in jogadoresDisponiveisLancamento">
+                            <td>
+                                {{dado.pda_jog_apelido}} 
+                            </td>
+                            <td>
+                                <span >
+                                    <a class="btn btn-xs btn-default" href="">
+                                    {{dado.pda_jog_status}}</a>
+                                </span>
+                            </td>
+                            <td>
+                                <input type="checkbox" ng-model="dado.selecionado">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="gerarPresenca()">Lançar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade " id="confirmacao_presenca">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma Geração das Presenças ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="gerarPresenca()">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <span class="glyphicon glyphicon-list-alt"></span> Lançamento</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="descricao" class="col-sm-2 control-label">Peladeiro</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="cmb_tabela" ng-model="objeto.pda_jog_cod" ng-options="jg.pda_jog_cod as jg.pda_jog_apelido for jg in jogadores">
+                                    <option value="">- Selecione -</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="descricao" class="col-sm-2 control-label">Gols</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="gols" placeholder="Gols" ng-model="objeto.pda_fjg_gol">
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="descricao" class="col-sm-2 control-label">Amarelo</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="amarelo" placeholder="Amarelo" ng-model="objeto.pda_fjg_amarelo">
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="descricao" class="col-sm-2 control-label">Azul</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="azul" placeholder="Azul" ng-model="objeto.pda_fjg_azul">
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="descricao" class="col-sm-2 control-label">Vermelho</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="vermelho" placeholder="Vermelho" ng-model="objeto.pda_fjg_vermelho">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="Salvar(objeto)" data-loading-text="Salvando...">
+                        <i class="glyphicon glyphicon-ok"></i> Salvar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <i class="glyphicon glyphicon-remove"></i> Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="modal fade " id="resultado_completo">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Resultado Completo</h4>
+                    </div>
+                        <div class="form-group">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td>Peladeiro</td>
+                                        <td>Votos</td>
+                                        <td>% Freq.</td>
+                                   </tr>
+                                    <tr ng-repeat="lista in lista_completa">
+                                        <td>{{$index+1}} - {{lista.pda_jog_apelido}}</td>
+                                        <td>{{lista.qtd_votos}}</td>
+                                        <td>{{lista.frequencia}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    <div class="container">
+        <div class="modal fade " id="meus_votos">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Meus Votos</h4>
+                    </div>
+                        <div class="form-group">
+                            <div id="vermelho" class="alert alert-info" ng-if="meus_votos.length == 0">
+                                Você não recebeu votos neste dia !
+                            </div>
+                            <table class="table table-hover" ng-if="meus_votos.length > 0">
+                                <tr>
+                                    <td>Peladeiro</td>
+                                </tr>
+                                <tr ng-repeat="lista in meus_votos">
+                                    <td>{{$index+1}} - {{lista.pda_jog_apelido}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+</div>

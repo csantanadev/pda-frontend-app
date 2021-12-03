@@ -1,0 +1,42 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="flaticon-three-persons"></span> Peladeiros&nbsp;&nbsp;&nbsp;({{dados[0].qtd_ativos}} ativos)
+            <span class="pull-right" ng-if="admin === 'S'">
+                <a class="label label-primary" href="#/novoJogador">
+                    <i class="glyphicon glyphicon-plus"></i> Novo</a>
+            </span>
+        </h4>
+    </div>
+    <br>
+    <input class="form-control" type="text" ng-model="criterioDeBusca" ng-model-options="{updateOn: 'default blur', debounce:{default: 500, blur: 0}}"   
+            placeholder="digite o apelido para filtrar..." />
+    <br>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados| filter: criterioDeBusca track by dado.pda_jog_cod">
+                <td>
+                    {{dado.pda_jog_apelido}} 
+                </td>
+                <td>
+                  <span ng-class="getStatus(dado.pda_jog_status)"> {{getStatusDesc(dado.pda_jog_status)}}
+                </td>
+                <td>
+                    <span class="pull-right">
+                        <a class="btn btn-xs btn-default" href="#/perfilJogador/{{dado.pda_jog_cod}}">
+                            <i class="glyphicon glyphicon-search"></i> Detalhe</a>
+                    </span>
+                </td>
+                <td>
+                    <span class="pull-right" ng-if="admin === 'S'">
+                        <a class="btn btn-xs btn-default" href="#/detalheJogador/{{dado.pda_jog_cod}}">
+                            <i class="glyphicon glyphicon-pencil"></i></a>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

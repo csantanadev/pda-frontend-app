@@ -1,0 +1,219 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="modal-header">
+        <a class="close" href="#/jogadores">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="flaticon-three-persons"></span> Perfil de {{dados.pda_jog_apelido}}</h4>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="codigo">Nº de Matrícula:</label> {{dados.pda_jog_cod}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Nome:</label> {{dados.pda_jog_nome}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Apelido:</label> {{dados.pda_jog_apelido}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Posição:</label> {{dados.pda_jog_posicao}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Status:</label>
+        <span ng-class="getStatus(dados.pda_jog_status)"> {{getStatusDesc(dados.pda_jog_status)}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Situação:</label> {{getSituacao(dados.pda_jog_status_mensal_conv)}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Data Nascimento:</label> {{dados.pda_jog_dta_nasc| date : 'dd/MM/yyyy'}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Data de Cadastro:</label> {{dados.pda_jog_dta_cadastro| date : 'dd/MM/yyyy'}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Celular:</label> {{dados.pda_jog_celular}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">RG:</label> {{dados.pda_jog_rg}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Mensalidade:</label> {{dados.pda_tab_valor|currency}}
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-stats"></span> Números de {{dados.pda_jog_apelido}}</h4>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="codigo">Frequência:</label> {{dados.perc_frequencia}} %
+    </div>
+    <div class="form-group">
+        <label for="codigo">Gols no Ano: &nbsp;</label>
+        <img src="./img/gols.png">&nbsp; {{dados.gols}}
+    </div>
+     <div class="form-group">
+        <label for="codigo">Votos no Ano: &nbsp;</label>
+        <img src="./img/qtd_votos.png">&nbsp; {{dados.qtd_votos}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Média de Gols: &nbsp;</label> {{dados.media_gols}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Cartões Amarelo: &nbsp;</label>
+        <img src="./img/cartaoamarelo.png">&nbsp; {{dados.amarelo}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Cartões Azul: &nbsp;</label>
+        <img src="./img/cartaoazul.png">&nbsp; {{dados.azul}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Cartões Vermelho: &nbsp;</label>
+        <img src="./img/cartaovermelho.png">&nbsp; {{dados.vermelho}}
+    </div>
+    <div class="form-group">
+        <label for="codigo">Dívida Ativa: &nbsp;</label>
+        <img src="./img/divida.png">&nbsp;
+        <font style="{{getColor(dados.divida_ativa)}}"> {{dados.divida_ativa|currency}}</font>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Mensalidades de {{dados.pda_jog_apelido}}</h4>
+    </div>
+    <br>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.mensalidades">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    <b>{{dado.pda_lan_valor|currency}} ({{dado.str_status}})</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!--<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Taxa Extra de {{dados.pda_jog_apelido}}</h4>
+    </div>
+    <br>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.taxa">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    <b>{{dado.pda_lan_valor|currency}} ({{dado.str_status}})</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="modal-header" ng-if="dados.card_amarelo.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Amarelo <img src="./img/cartaoamarelo.png"></h4>
+    </div>
+    <div class="form-group" ng-if="dados.card_amarelo.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.card_amarelo">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header" ng-if="dados.card_azul.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Azul <img src="./img/cartaoazul.png"></h4>
+    </div>
+    <div class="form-group" ng-if="dados.card_azul.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.card_azul">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header" ng-if="dados.card_vermelho.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Vermelho <img src="./img/cartaovermelho.png"></h4>
+    </div>
+    <div class="form-group" ng-if="dados.card_vermelho.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.card_vermelho">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{vdado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header" ng-if="dados.material_pelada.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Material da Pelada</h4>
+    </div>
+    <div class="form-group" ng-if="dados.material_pelada.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.material_pelada">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    
+</div>

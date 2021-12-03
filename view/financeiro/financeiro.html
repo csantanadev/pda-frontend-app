@@ -1,0 +1,203 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Lançamentos
+            <span class="pull-right" ng-if="admin === 'S'">
+                <a class="label label-primary" href="#/novofinanceiro">
+                    <i class="glyphicon glyphicon-plus"></i> Novo</a>
+            </span>
+            <br>
+            <button type="button" class="btn btn-xs btn-info pull-right" ng-if="admin === 'S'" ng-click="ConfirmaMensalidades()">
+                <i class="glyphicon glyphicon-usd"></i> Mensalidades</button>
+                <br>
+          <!--  <button type="button" class="btn btn-xs btn-info pull-right" ng-if="admin === 'S'" ng-click="ConfirmaTaxas()">
+                <i class="glyphicon glyphicon-usd"></i> Taxa Extra</button> -->
+        </h4>
+    </div>
+    <br>
+    <div class="modal-header">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>Mês / Ano:</label>
+                <select class="form-control" id="mes" ng-model="objPesq.mesano" ng-change="pesquisa()" ng-options="tab.mes+tab.ano as tab.mes_str+tab.ano for tab in tabelas">
+                    <option value="">- Selecione -</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="modal-header" ng-if="dados">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label>Total Receita:</label>
+                <label style="color:green">{{dados[0].total_provento|currency}}</label>
+            </div>
+            <div class="col-sm-3">
+                <label>Total Despesa:</label>
+                <label style="color:red">{{dados[0].total_desconto|currency}}</label>
+            </div>
+            <div class="col-sm-2">
+            	<label>Visualizar:</label>
+            	<select class="form-control" id="filtrotipo" ng-model="objPesq.tipo" ng-change="pesquisa()">
+                    <option value="">Todos</option>
+                    <option value="P">Receitas</option>
+                    <option value="D">Despesas</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="form-group" ng-show="dados.length > 0">
+        <input class="form-control" type="text" ng-model="criterioDeBusca" ng-model-options="{updateOn: 'default blur', debounce:{default: 500, blur: 0}}"
+          placeholder="digite o apelido para filtrar..." />
+    </div>
+    <br>
+
+
+    <!--<div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados| filter: criterioDeBusca track by dado.pda_lan_cod">
+                <td>
+                    <span class="pull-left" ng-class="getStatus(dado.pda_lan_operacao)"> {{getStatusDesc(dado.pda_lan_operacao)}}</p>
+                </td>
+                <td>
+                    <p ng-if="dado.pda_lan_operacao == 'P'">{{dado.pda_jog_apelido}}</p>
+                </td>
+                <td>
+                  {{dado.pda_lan_valor|currency}}
+                </td>
+                <td>
+                  <label style="{{getStatusSituacao(dado.str_status)}}">{{dado.str_status}}</label>
+                </td>
+                <td>
+                 <span class="pull-right">
+                        <a class="btn btn-xs btn-default" href="">
+                            <i class="glyphicon glyphicon-search"></i></a>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>-->
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4" ng-repeat="dado in dados| filter: criterioDeBusca track by dado.pda_lan_cod">
+            <div class="thumbnail" style="background:#f6f5f5">
+                <div class="caption">
+                    <p>
+                        <span class="pull-left" ng-class="getStatus(dado.pda_lan_operacao)"> {{getStatusDesc(dado.pda_lan_operacao)}}</p>
+                    <br>
+                    <b>Lançamento: </b>{{dado.pda_tlc_descricao}}
+                    <label ng-if="dado.pda_lan_operacao == 'P'">- {{dado.pda_jog_apelido}}</label>
+                    <br>
+                    <b>Data Ocorrência: </b>{{dado.pda_lan_data_ocorrencia| date : 'dd/MM/yyyy'}}
+                    <br>
+                    <b>Valor:</b> {{dado.pda_lan_valor|currency}}
+                    <br>
+                    <b>Data Pagamento:</b> {{dado.pda_lan_data_pagamento| date : 'dd/MM/yyyy'}}
+                    <br>
+                    <b>Valor Pago:</b> {{dado.pda_lan_valor_pago|currency}}
+                    <br>
+                    <b>Situação:</b>
+                    <label style="{{getStatusSituacao(dado.str_status)}}">({{dado.str_status}})</label>
+                    <br>
+                    <b>Obs:</b> {{dado.pda_lan_obs}}
+                    <br>
+                    <span ng-if="admin === 'S'">
+                        <a class="btn btn-xs btn-default" href="#/detalheFinanceiro/{{dado.pda_lan_cod}}">
+                            <i class="glyphicon glyphicon-pencil"></i> editar</a>
+                    </span>
+                    <span ng-if="admin === 'S'" class="btn btn-xs btn-default" ng-click="ConfirmaExclusao(dado.pda_lan_cod)">
+                        <i class="glyphicon glyphicon-remove"></i> excluir</span>
+                    <span ng-if="admin === 'S'&&dado.str_status === 'ABERTO'" class="btn btn-xs btn-success" 
+                    ng-click="ConfirmaRecebimento(dado.pda_lan_cod, dado)">
+                        <i class="glyphicon glyphicon-ok"></i> quitar</span>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+
+    <div class="modal fade " id="confirmacao">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="Excluir(codexclusao)">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="confirmacao_recebimento">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma pagamento ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="Receber(lan_cod)">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="confirmacao_mensalidades">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma Mensalidades ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="gerarMensalidades()">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="confirmacao_taxas">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Confirmação</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirma Geração das Taxas ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="gerarTaxaExtra()">Sim</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>

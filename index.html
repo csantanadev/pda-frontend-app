@@ -1,0 +1,164 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <title>Pelada dos Amigos</title>
+
+    <!-- CSS -->
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./fonts/flaticon.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="./img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#000000">
+
+
+    <!-- Lib Angular & BootStrap -->
+    <script src="lib/angular/angular.js"></script> 
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-cookies.js" type="text/javascript"></script>
+    <script src="lib/angular/angular-locale_pt-br.js"></script>
+    <script src="lib/angular/angular-messages.js"></script>
+    <script src="lib/jquery/jquery-1.11.0.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+
+    <!-- JS do Sistema -->
+    <script src="js/app.js"></script>
+    <script src="lib/angular/angular-input-masks-standalone.min.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/login/loginCtrl.js" type="text/javascript"></script>
+    <script src="js/services/authenticationAPIService.js" type="text/javascript"></script>
+
+    <script src="js/controllers/home/homeCtrl.js"></script>
+    <script src="js/controllers/home/AlterarSenha.js"></script>
+
+    <script src="js/controllers/jogadores/jogadoresCtrl.js"></script>
+    <script src="js/controllers/jogadores/jogadoresManterCtrl.js"></script>
+    <script src="js/controllers/jogadores/jogadoresDetalheCtrl.js"></script>
+
+    <script src="js/controllers/peladas/peladasCtrl.js"></script>
+    <script src="js/controllers/peladas/peladasManterCtrl.js"></script>
+    <script src="js/controllers/peladas/peladasDetalheCtrl.js"></script>
+    <script src="js/controllers/peladas/scoutsPeladaCtrl.js"></script>
+    <script src="js/controllers/peladas/votacaoPeladaCtrl.js"></script>
+
+	<script src="js/controllers/notifications/notificationsCtrl.js"></script>
+
+    <script src="js/controllers/financeiro/financeiroCtrl.js"></script>
+    <script src="js/controllers/financeiro/financeiroManterCtrl.js"></script>
+    <script src="js/controllers/financeiro/financeiroDetalheCtrl.js"></script>
+
+    <script src="js/controllers/dashboard/dashboardCtrl.js"></script>
+    <script src="js/controllers/dashboard/dashboardResultadoCompCtrl.js"></script>
+    <script src="js/controllers/dashboard/dashboardAuditoriaCtrl.js"></script>
+
+    <!-- Services -->
+    <script src="js/services/frameAPIService.js"></script>
+    <script src="js/services/homeAPIService.js"></script>
+    <script src="js/services/peladasAPIService.js"></script>
+    <script src="js/services/jogadoresAPIService.js"></script>
+    <script src="js/services/financeiroAPIService.js"></script>
+    <script src="js/services/scoutsAPIService.js"></script>
+    <script src="js/services/dashboardAPIService.js"></script>
+
+    <script src="js/services/smsAPIService.js"></script>
+    <script src="js/services/notificationsAPIService.js"></script>
+
+    <!-- JS de config -->
+    <script src="js/config/configValue.js"></script>
+    <script src="js/config/routeConfig.js"></script>
+
+    <!-- Interceptors -->
+    <script src="js/interceptors/loadingInterceptor.js"></script>
+    <script src="js/interceptors/timestampInterceptor.js"></script>
+    <script src="js/config/interceptorsConfig.js"></script>
+</head>
+
+<body ng-app="apppeladadosamigos">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">
+                    <span class="brand"></span> Pelada dos Amigos</a>
+                <button type="button" class="navbar-toggle collapsed" id="btn-menu" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" id="menuOpcoes">
+                    <li>
+                        <a href="#/jogadores">
+                            <span class="flaticon-three-persons"></span> Peladeiros</a>
+                    </li>
+                    <li>
+                        <a href="#/peladas">
+                            <span class="glyphicon glyphicon-calendar"></span> Peladas</a>
+                    </li>
+                    <li>
+                        <a href="#/financeiro">
+                            <span class="glyphicon glyphicon-usd"></span> Financeiro</a>
+                    </li>
+                    <li>
+                        <a href="#/dashboard">
+                            <span class="glyphicon glyphicon-stats"></span> Dashboard</a>
+                    </li>
+
+                    <li>
+                        <a href="#login">
+                            <span class="glyphicon glyphicon-log-out"></span> Sair</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div ng-show="loading">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+        <h4 class="text-center">
+            <font style="color: #808080"> Aguarde...</font>
+        </h4>
+    </div>
+
+    <div ng-hide="loading">
+        <div ng-view>
+        </div>
+
+    </div>
+</body>
+
+</html>

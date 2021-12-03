@@ -1,0 +1,73 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header">
+        <a class="close" href="#/peladas">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-calendar"></span> Peladas</h4>
+    </div>
+
+    <div class="modal-body">
+        <form class="form-horizontal" role="form" name="Formulario">
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Código:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="codigo" disabled="" ng-model="objeto.pda_pel_cod">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Data:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="data" ng-model="objeto.pda_pel_data" placeholder="Data" ng-blur="PreencheData()">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="celular" class="col-sm-1 control-label">Mês:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="mes" placeholder="Mês" ng-model="objeto.pda_pel_mes">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="celular" class="col-sm-1 control-label">Ano:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="ano" placeholder="Ano" ng-model="objeto.pda_pel_ano">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Status:</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="posicao" ng-model="objeto.pda_pel_status">
+                        <option value="">- Selecione -</option>
+                        <option value="A">Aberta</option>
+                        <option value="V">Em Votação</option>
+                        <option value="F">Fechada</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-success" ng-click="Salvar(objeto)" data-loading-text="Salvando...">
+                        <i class="glyphicon glyphicon-ok"></i> Salvar</button>
+                    <a class="btn btn-danger" href="#/peladas">
+                        <i class="glyphicon glyphicon-remove"></i> Fechar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

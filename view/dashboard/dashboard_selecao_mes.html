@@ -1,0 +1,30 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="modal-header">
+        <a class="close" href="#/dashboard">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="">
+                <img src="./img/trofeu.png">
+            </span> Seleção de cada Mês
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr>
+                <td>Peladeiro</td>
+                <td>Mês</td>
+                <td>Votos</td>
+           </tr>
+            <tr ng-repeat="dado in dados.selecao_mes">
+                <td  style="{{getZebrado(dado.mesa)}}" >{{dado.pda_jog_apelido}}</td>
+                <td style="{{getZebrado(dado.mesa)}}">{{dado.mesa}}</td>
+                <td style="{{getZebrado(dado.mesa)}}">{{dado.qtd_votos}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

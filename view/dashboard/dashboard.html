@@ -1,0 +1,332 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-stats"></span> Dashboard
+        </h4>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/fincancas" class="thumbnail">
+                <img src="./img/financas_dash.png" alt="...">
+                <center> <p>Finanças</p> </center>
+            </a>
+         </div>
+
+
+
+         <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/divida_ativa" class="thumbnail">
+                <img src="./img/divida_ativa.png" alt="...">
+                <center> <p>Dívida Ativa</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/artilheiromes" class="thumbnail">
+                <img src="./img/artilheiros_ano.png" alt="...">
+                <center> <p>Artilheiros do Mês</p> </center>
+            </a>
+        </div>
+       
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/selecaomes" class="thumbnail">
+                <img src="./img/selecao_mes.png" alt="...">
+                <center> <p>Seleção do Mês</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/artilheiroano" class="thumbnail">
+                <img src="./img/artilheiros_ano.png" alt="...">
+                <center> <p>Artilheiros do Ano</p> </center>
+            </a>
+        </div>
+
+       <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/selecaoano" class="thumbnail">
+                <img src="./img/selecao_ano.png" alt="...">
+                <center> <p>Seleção do Ano</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/mediagols" class="thumbnail">
+                <img src="./img/media_gols.png" alt="...">
+                <center> <p>Média de Gols</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/frequencia" class="thumbnail">
+                <img src="./img/frequencia.png" alt="...">
+                <center> <p>% Frequência</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/disciplicados" class="thumbnail">
+                <img src="./img/disciplinados.png" alt="...">
+                <center> <p>Disciplinados</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/indisciplicados" class="thumbnail">
+                <img src="./img/indisciplinados.png" alt="...">
+                <center> <p>Indisciplinados</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/aniversariantes" class="thumbnail">
+                <img src="./img/aniversariantes.png" alt="...">
+                <center> <p>Aniversariantes</p> </center>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+            <a href="#/dashboard/auditoria" class="thumbnail">
+                <img src="./img/auditoria_voto.png" alt="...">
+                <center> <p>Auditoria de Voto</p> </center>
+            </a>
+        </div>
+
+
+    </div>
+
+    
+
+   <!-- 
+
+   <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Finanças &nbsp;&nbsp;&nbsp;(Saldo: {{dados.financeiro[0].saldo_geral|currency}})
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.financeiro">
+              <td>
+                    {{dado.mes_str}} - {{dado.pda_lan_ano}} &nbsp;&nbsp;&nbsp;
+                    <font style="color:green">Receita:&nbsp;{{dado.receita|currency}}</font>
+                    &nbsp;&nbsp;&nbsp;
+                    <font style="color:red">Despesa:&nbsp;{{dado.despesa|currency}}</font>
+                    &nbsp;&nbsp;&nbsp;
+                    <font style="color:rgb(7, 7, 122)">Saldo:&nbsp;{{dado.saldo_mes|currency}}</font>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="">
+                <img src="./img/gols.png">
+            </span> Artilheiros do Ano
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.artilharia track by dado.pda_jog_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.gols}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="">
+                <img src="./img/gols.png">
+            </span> Artilheiros do Mês
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.artilharia_mes">
+                <td>{{dado.pda_jog_apelido}}</td>
+                <td>{{dado.mes_extenso}}</td>
+                <td>{{dado.gols}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="">
+                <img src="./img/trofeu.png">
+            </span> Seleção de cada Mês
+            &nbsp;&nbsp;&nbsp;
+            <span class="">
+                <a class="btn btn-sm btn-warning" href="#/dashboard/resultadocompleto">
+                    <i class="glyphicon glyphicon-star"></i> Seleção do Ano</a>
+                
+            </span>
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr>
+                <td>Peladeiro</td>
+                <td>Mês</td>
+                <td>Votos</td>
+           </tr>
+            <tr ng-repeat="dado in dados.selecao_mes">
+                <td  style="{{getZebrado(dado.mesa)}}" >{{dado.pda_jog_apelido}}</td>
+                <td style="{{getZebrado(dado.mesa)}}">{{dado.mesa}}</td>
+                <td style="{{getZebrado(dado.mesa)}}">{{dado.qtd_votos}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-stats">
+            </span> Top 5 em Média de Gols
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr>
+                <td>Peladeiro</td>
+                <td>Gols</td>
+                <td>Peladas</td>
+                <td>Média</td>
+           </tr>
+            <tr ng-repeat="dado in dados.media_gol">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.gols}}</td>
+                <td>{{dado.qtd}}</td>
+                <td>{{dado.media_gols}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-thumbs-down">
+            </span> Top 5 dos Indisciplinados
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.indisciplinados track by dado.pda_jog_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td><img src="./img/cartaoamarelo.png">&nbsp; {{dado.pda_fjg_amarelo}}</td>
+                <td><img src="./img/cartaoazul.png">&nbsp;{{dado.pda_fjg_azul}}</font></td>
+                <td><img src="./img/cartaovermelho.png">&nbsp;{{dado.pda_fjg_vermelho}}</font></td>
+                <td>{{dado.tot_cartao}}</td>
+            </tr>
+        </table>
+    </div>   
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-hand-right">
+            </span> Top 5 dos Disciplinados
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.disciplinados track by dado.pda_jog_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td><img src="./img/cartaoamarelo.png">&nbsp; {{dado.pda_fjg_amarelo}}</td>
+                <td><img src="./img/cartaoazul.png">&nbsp;{{dado.pda_fjg_azul}}</font></td>
+                <td><img src="./img/cartaovermelho.png">&nbsp;{{dado.pda_fjg_vermelho}}</font></td>
+                <td>{{dado.tot_cartao}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-stats">
+            </span> Top 5 de % Frequëncia
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.frequencia track by dado.pda_jog_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td>{{dado.frequencia}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Ativa &nbsp;&nbsp;&nbsp;(Total: {{dados.divida_ativa[0].total|currency}})
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.divida_ativa track by dado.pda_jog_cod">
+                <td>{{dado.pda_jog_apelido}}</td>
+                <td>
+                    <font style="{{getColor(dado.divida_ativa)}}"> {{dado.divida_ativa|currency}}</font>
+                </td>
+                <td>
+                    <span class="pull-right">
+                        <a class="btn btn-xs btn-default" href="#/perfilJogadorDash/{{dado.pda_jog_cod}}">
+                            <i class="glyphicon glyphicon-search"></i> Detalhe</a>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container">
+        <div class="modal fade " id="resultado_completo">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Seleção do Ano</h4>
+                    </div>
+                        <div class="form-group">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td>Peladeiro</td>
+                                        <td>Votos</td>
+                                        <td>% Freq.</td>
+                                   </tr>
+                                    <tr ng-repeat="melhor in melhoresAno">
+                                        <td>{{$index+1}} - {{melhor.pda_jog_apelido}}</td>
+                                        <td>{{melhor.qtd_votos}}</td>
+                                        <td>{{melhor.frequencia}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-star"></span> Aniversariantes
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.aniversario track by dado.pda_jog_cod">
+                <td>{{dado.pda_jog_apelido}}</td>
+                <td>{{dado.mes_str}}</td>
+                <td>{{dado.dia}}</td>
+            </tr>
+        </table>
+    </div>
+    -->
+
+</div>

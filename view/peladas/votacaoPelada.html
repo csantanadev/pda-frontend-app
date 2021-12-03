@@ -1,0 +1,137 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <a class="close" href="#/peladas">
+            <i class=""></i> &times;</a>
+            <span class="glyphicon glyphicon-star-empty"></span> Escolha no máximo  {{param.valor}}
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table">
+            <tr ng-class="{selecionado: dado.selecionado}" ng-repeat="dado in dados">
+                <td>
+                    {{dado.pda_jog_apelido}} 
+                </td>
+                <td>
+                    <span >
+                        <a class="btn btn-xs btn-default" href="">
+                        {{dado.pda_jog_posicao}}</a>
+                    </span>
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="dado.selecionado">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div class="container">
+    <div class="form-group">
+       <center>
+            <button type="button" class="btn btn-lg btn-success" ng-click="verificaQtdSelecionados(dados)">
+            <i class="glyphicon glyphicon-send"></i> Enviar minha votação</button>
+        </center> 
+    </div>
+</div>    
+
+
+<div class="container">
+    <div class="modal fade " id="confirmacao_opcao">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmação</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a votação escolhida ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="EnviarVotacao()">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+<div class="container">
+    <div class="modal fade " id="erro_votacao">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Erro</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: red;">Escolha no máximo {{param.valor}} jogadores</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+<div class="container">
+    <div class="modal fade " id="sucesso_votacao">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sucesso</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: green;">Votação enviada com sucesso !</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"  ng-click="redirecionar()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="modal fade " id="ja_votou">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Erro</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: red;">Você já votou !</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="container">
+    <div class="modal fade " id="votacao_encerrada">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Erro</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: red;">Votação já encerrada !</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

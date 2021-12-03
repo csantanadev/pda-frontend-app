@@ -1,0 +1,134 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header">
+        <a class="close" id="back" href="#/financeiro">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Novo Lançamento</h4>
+    </div>
+
+    <div class="modal-body">
+        <form class="form-horizontal" role="form" name="Formulario">
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Código:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="codigo" disabled="" ng-model="objeto.pda_lan_cod">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Mês:</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="posicao" ng-model="objeto.pda_lan_mes">
+                        <option value="">- Selecione -</option>
+                        <option value="01">JANEIRO</option>
+                        <option value="02">FEVEREIRO</option>
+                        <option value="03">MARÇO</option>
+                        <option value="04">ABRIL</option>
+                        <option value="05">MAIO</option>
+                        <option value="06">JUNHO</option>
+                        <option value="07">JULHO</option>
+                        <option value="08">AGOSTO</option>
+                        <option value="09">SETEMBRO</option>
+                        <option value="10">OUTUBRO</option>
+                        <option value="11">NOVEMBRO</option>
+                        <option value="12">DEZEMBRO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco" class="col-sm-1 control-label">Ano:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="ano" placeholder="Ano" ng-model="objeto.pda_lan_ano">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Tipo:</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="cmb_tabela" ng-model="objeto.pda_tlc_cod"  
+                    ng-options="tp.pda_tlc_cod as tp.pda_tlc_descricao for tp in tipos">
+                        <option value="">- Selecione -</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Peladeiro:</label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="cmb_tabela" ng-model="objeto.pda_jog_cod"  ng-options="jg.pda_jog_cod as jg.pda_jog_apelido for jg in jogadores">
+                        <option value="">- Selecione -</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Operação:</label>
+                <div class="col-sm-2">
+                    <select class="form-control" id="posicao" ng-model="objeto.pda_lan_operacao">
+                        <option value="">- Selecione -</option>
+                        <option value="P">Receita</option>
+                        <option value="D">Despesa</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Data Oc.:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="data_oco" ng-model="objeto.pda_lan_data_ocorrencia">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="emissao" class="col-sm-1 control-label">Valor:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="valor" ng-model="objeto.pda_lan_valor" ui-money-mask>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Data Pag.:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="data_pagamento" ng-model="objeto.pda_lan_data_pagamento">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="emissao" class="col-sm-1 control-label">Valor Pago:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="valor_pago" ng-model="objeto.pda_lan_valor_pago" ui-money-mask>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="observacao" class="col-sm-1 control-label">Observação:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="observacao" ng-model="objeto.pda_lan_obs" maxlength="80">
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-success" ng-click="Salvar(objeto)" data-loading-text="Salvando...">
+                        <i class="glyphicon glyphicon-ok"></i> Salvar</button>
+                    <a class="btn btn-danger" href="#/financeiro">
+                        <i class="glyphicon glyphicon-remove"></i> Fechar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

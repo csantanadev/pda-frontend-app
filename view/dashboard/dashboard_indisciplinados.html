@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="modal-header">
+        <a class="close" href="#/dashboard">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-thumbs-down">
+            </span> Top 10 dos Indisciplinados
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.indisciplinados track by dado.pda_jog_cod">
+                <td>{{$index+1}} - {{dado.pda_jog_apelido}}</td>
+                <td><img src="./img/cartaoamarelo.png">&nbsp; {{dado.pda_fjg_amarelo}}</td>
+                <td><img src="./img/cartaoazul.png">&nbsp;{{dado.pda_fjg_azul}}</font></td>
+                <td><img src="./img/cartaovermelho.png">&nbsp;{{dado.pda_fjg_vermelho}}</font></td>
+                <td>{{dado.tot_cartao}}</td>
+            </tr>
+        </table>
+    </div> 
+
+</div>

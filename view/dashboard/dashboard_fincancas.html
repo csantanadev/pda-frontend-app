@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="modal-header">
+        <a class="close" href="#/dashboard">
+            <i class=""></i> &times;</a>
+
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-stats"></span> Finanças &nbsp;&nbsp;&nbsp;(Saldo: {{dados.financeiro[0].saldo_geral|currency}})
+        </h4>
+    </div>
+
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.financeiro">
+              <td>
+                    {{dado.mes_str}} - {{dado.pda_lan_ano}} &nbsp;&nbsp;&nbsp;
+                    <font style="color:green">Receita:&nbsp;{{dado.receita|currency}}</font>
+                    &nbsp;&nbsp;&nbsp;
+                    <font style="color:red">Despesa:&nbsp;{{dado.despesa|currency}}</font>
+                    &nbsp;&nbsp;&nbsp;
+                    <font style="color:rgb(7, 7, 122)">Saldo:&nbsp;{{dado.saldo_mes|currency}}</font>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</div>

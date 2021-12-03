@@ -1,0 +1,143 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="modal-header">
+        <a class="close" href="#/dashboard/divida_ativa">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="flaticon-three-persons"></span> Dívida de {{dados.pda_jog_apelido}}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Mensalidades de {{dados.pda_jog_apelido}}</h4>
+    </div>
+    <br>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.mensalidades">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    <b>{{dado.pda_lan_valor|currency}} ({{dado.str_status}})</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!--<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Taxa Extra de {{dados.pda_jog_apelido}}</h4>
+    </div>
+    <br>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.taxa">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    <b>{{dado.pda_lan_valor|currency}} ({{dado.str_status}})</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="modal-header" ng-if="dados.card_amarelo.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Amarelo <img src="./img/cartaoamarelo.png"></h4>
+    </div>
+    <div class="form-group" ng-if="dados.card_amarelo.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.card_amarelo">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header" ng-if="dados.card_azul.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Azul <img src="./img/cartaoazul.png"></h4>
+    </div>
+    <div class="form-group" ng-if="dados.card_azul.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.card_azul">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header" ng-if="dados.card_vermelho.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Dívida Vermelho <img src="./img/cartaovermelho.png"></h4>
+    </div>
+    <div class="form-group" ng-if="dados.card_vermelho.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.card_vermelho">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-header" ng-if="dados.material_pelada.length != 0">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-usd"></span> Material da Pelada</h4>
+    </div>
+    <div class="form-group" ng-if="dados.material_pelada.length != 0">
+        <table class="table table-hover">
+            <tr>
+                <td>Mês / Ano</td>
+                <td>Valor</td>
+                <td>PG</td>
+            </tr>
+            <tr ng-repeat="dado in dados.material_pelada">
+                <td ng-class="getStatusPag(dado.str_status)">{{dado.pda_lan_mes}} / {{dado.pda_lan_ano}}</td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor|currency}}
+                </td>
+                <td ng-class="getStatusPag(dado.str_status)">
+                    {{dado.pda_lan_valor_pago|currency}} ({{dado.str_status}})
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+</div>

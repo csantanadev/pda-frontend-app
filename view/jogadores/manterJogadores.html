@@ -1,0 +1,141 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header" >
+        <a class="close" id="back" href="#/jogadores">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="flaticon-three-persons"></span> Jogadores</h4>
+    </div>
+
+    <div class="modal-body">
+        <form class="form-horizontal" role="form" name="Formulario">
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Código:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="codigo" disabled="" ng-model="objeto.pda_jog_cod">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco" class="col-sm-1 control-label">Nome:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome do Jogador" ng-model="objeto.pda_jog_nome" maxlength="80">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco" class="col-sm-1 control-label">Apelido:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="apelido" placeholder="Apelido" ng-model="objeto.pda_jog_apelido" maxlength="80">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Dt. Nasc:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="data_nasc" ng-model="objeto.pda_jog_dta_nasc">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Dt. Cadastro:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="data_cadastro" ng-model="objeto.pda_jog_dta_cadastro">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="celular" class="col-sm-1 control-label">Celular:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="celular" placeholder="Celular" ng-model="objeto.pda_jog_celular">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="celular" class="col-sm-1 control-label">RG:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="RG" placeholder="RG" ng-model="objeto.pda_jog_rg">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Posição:</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="posicao" ng-model="objeto.pda_jog_posicao">
+                        <option value="">- Selecione -</option>
+                        <option value="DEFESA">DEFESA</option>
+                        <option value="MEIO">MEIO</option>
+                        <option value="ATAQUE">ATAQUE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Login:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="login" placeholder="Login" maxlength="20" ng-model="objeto.pda_jog_login">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="celular" class="col-sm-1 control-label">Senha:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="senha" placeholder="Senha" maxlength="10" ng-model="objeto.pda_jog_senha">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Status:</label>
+                <div class="col-sm-2">
+                    <select class="form-control" id="status" ng-model="objeto.pda_jog_status">
+                        <option value="">- Selecione -</option>
+                        <option value="A">ATIVO</option>
+                        <option value="M">DM</option>
+                        <option value="I">INATIVO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Mensal:</label>
+                <div class="col-sm-2">
+                    <select class="form-control" id="mensal" ng-model="objeto.pda_jog_status_mensal_conv">
+                        <option value="">- Selecione -</option>
+                        <option value="M">MENSAL</option>
+                        <option value="C">CONVIDADO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo" class="col-sm-1 control-label">Tabela:</label>
+                <div class="col-sm-2">
+                    <select class="form-control" id="cmb_tabela" ng-model="objeto.pda_tab_cod"  ng-required="true" ng-options="tb.pda_tab_cod as tb.pda_tab_valor | currency for tb in tabelas">
+                        <option value="">- Selecione -</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-success" ng-click="Salvar(objeto)"  data-loading-text="Salvando...">
+                        <i class="glyphicon glyphicon-ok"></i> Salvar</button>
+                    <a class="btn btn-danger" href="#/jogadores">
+                        <i class="glyphicon glyphicon-remove"></i> Fechar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

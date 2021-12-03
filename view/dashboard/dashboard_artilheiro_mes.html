@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="modal-header">
+        <a class="close" href="#/dashboard">
+            <i class=""></i> &times;</a>
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="">
+                <img src="./img/gols.png">
+            </span> Artilheiros do Mês
+        </h4>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <tr ng-repeat="dado in dados.artilharia_mes">
+                <td>{{dado.pda_jog_apelido}}</td>
+                <td>{{dado.mes_extenso}}</td>
+                <td>{{dado.gols}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

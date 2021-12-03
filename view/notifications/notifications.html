@@ -1,0 +1,63 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div id="infocadastro" class="alert alert-success" style="display: none;">
+
+    </div>
+    <div id="infoerror" class="alert alert-danger" style="display: none;">
+
+    </div>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+            <span class="glyphicon glyphicon-bell"></span> Notificações
+        </h4>
+    </div>
+    <br>
+    <div class="modal-body">
+        <form class="form-horizontal" role="form" name="Formulario">
+
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label>Peladeiro:</label>
+                    <select class="form-control" id="pel" ng-model="objeto.token" ng-options="pel.token as pel.pda_jog_apelido for pel in peladeiros">
+                        <option value="">- Todos -</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label>Título:</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Título" ng-model="objeto.titulo" maxlength="80">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label>Mensagem:</label>
+                    <input type="text" class="form-control" id="apelido" placeholder="Mensagem" ng-model="objeto.mensagem" maxlength="80">
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-success" ng-click="enviarMensagem(objeto)" >
+                        <i class="glyphicon glyphicon-ok"></i> Enviar Mensagem</button>
+                    <a class="btn btn-danger" href="#/home">
+                        <i class="glyphicon glyphicon-remove"></i> Fechar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    
+
+    
+
+</div>
